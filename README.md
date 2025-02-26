@@ -1,8 +1,8 @@
 # Breaking-out-LLM  
 
 >Breaking out of LLM constrains and build AI Task Assistant to perform interactive security assessment.  
-
-![Break LLM out of Jail](/images/jail.png)  
+  
+<img src="/images/jail.png" width=250 height=200>
 
 >The research and learnings I am document here is to build an `AI` assistant that performs authorized penetration testing tasks by running commands and tools against a target and reviewing output from said tools to perform additional activities based on results and document artifacts.  
 
@@ -37,9 +37,15 @@
 - CPU AMD Ryzen 5 2600 
 - CPU's 12
 - GPU Nvidia GeForce RTX 4060 Ti with 16 GB onboard memory 
-- Onboard memory 32GB 
+- Onboard memory 32 GB 
 
->Local Ollama installed `http://127.0.0.1:11434`  
+>Local Ollama installed `http://0.0.0.0:11434`  
+
+>Configuration altered to allow Ollama to be reachable from all local interfaces edit:  
+
+```
+sudo systemctl edit --full ollama
+```  
 
 ## Large Language Model LLM  
 
