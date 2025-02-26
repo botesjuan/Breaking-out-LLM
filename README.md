@@ -59,11 +59,13 @@ sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.
 
 ## Large Language Model LLM  
 
->`Deepseek R1` LLM that provide the inital interactive input.  
+>`Deepseek R1` LLM that provide the inital interactive input, is not an `Agentic` Model  
 
 >Ollama API get Models Downloaded locally: `http://192.168.255.57:11434/api/tags`  
 
-## Agent API  
+>Agentic Model testing: ``  
+
+## Middleware API  
 
 >Develop API integration with the input prompt, the LLM must perform the security actitivity by running local bash commands on Ubuntu.  
 
