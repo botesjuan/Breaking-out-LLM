@@ -1,5 +1,6 @@
 # Breaking-out-LLM  
 
+>My work in progress notes as my knowledge expand while doing research and learning to build my objective.  
 >Breaking out of LLM constrains and build AI Task Assistant to perform interactive security assessment.  
   
 <img src="/images/jail.png" width=250 height=200>
@@ -47,13 +48,45 @@
 sudo systemctl edit --full ollama
 ```  
 
+>Set the docker instance for Ollama-WebUI to auto start the container after Ubuntu boot:  
+
+```
+sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main
+```  
+
+>Docker instance of Open WebUI: `http://127.0.0.1:3000/`  
+>Connected to Ollama local instance: `http://192.168.255.57:11434`  
+
 ## Large Language Model LLM  
 
 >`Deepseek R1` LLM that provide the inital interactive input.  
 
+>Ollama API get Models Downloaded locally: `http://192.168.255.57:11434/api/tags`  
+
 ## Agent API  
 
->Develop API integration with the input prompt, the LLM must perform the security actitivity by running local bash commands on Ubuntu.
+>Develop API integration with the input prompt, the LLM must perform the security actitivity by running local bash commands on Ubuntu.  
+
+>Path Python API Script: `/home/peanut/Downloads/breakout_api`  
+
+>Start API: `python3 ollama_command_executor.py`  
+>Running on `http://0.0.0.0:5001`  
+
+>The Ollama LLM is processing the text based input from user but does not inherently send HTTP requests.
+>The Ollama WebUI frontend running in docker sends user queries to the local Ollama instance,  
+>and if Ollama is instructed to execute commands via the middleware, the WebUI must generate the and send HTTP POST requests.  
+
+### Troubleshooting Integration  
+
+>Communication and permissions between docker WebUI and localhost Middleware on port 5001.  
+
+```
+sudo docker exec -it open-webui bash
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"ls -al /home"}'
+```  
+
+>Above will test if the docker instance bash shell have permissions to execute and reach the middleware API running on localhost port 5001.  
+
 
 ## Import Results from Tasks  
 
