@@ -27,6 +27,12 @@
 >This research is constrained by the available resources and funding to test performance.
 >This proof of concept (POC) is to validate the execution functionality, results and not the speed.  
 
+## Design  
+
+>Integration of LLM, Ollama, WebUI, Middleware API, host instructions:  
+
+![breakout llm design jail](/images/breakout-llm-design.png)  
+
 ----  
 
 ## Setup  
