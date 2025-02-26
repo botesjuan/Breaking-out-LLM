@@ -6,7 +6,7 @@
 
 >The research and learnings I am document here is to build an `AI` assistant that performs authorized penetration testing tasks by running commands and tools against a target and reviewing output from said tools to perform additional activities based on results and document artifacts.  
 
-![Break the glasss Emergency](/images/break-glass.png)  
+<img src="/images/break-glass.png" width=250 height=200>
 
 ----  
 
