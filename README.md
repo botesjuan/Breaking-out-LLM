@@ -71,6 +71,10 @@ sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.
 
 >Agentic Model testing: ``  
 
+## Integration Authorization  
+
+>Protect access control what services may interact with Middleware API, to prevent unauthorized access from rogue actors.
+
 ## Middleware API  
 
 >Develop API integration with the input prompt, the LLM must perform the security actitivity by running local bash commands on Ubuntu.  
