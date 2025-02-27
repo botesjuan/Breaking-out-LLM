@@ -113,13 +113,13 @@ curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/js
 
 >Results must be saved and records as evidence that will be put into document, screenshots taken as part of evendice.  
 
-## Take Screenshots as part of Artifacts  
+## Screenshots Evidence   
 
 >Screenshots must include dates for timeline and logging.  
 
 ## Training & Enhance  
 
->LLM trained on security methodology documentation containing example commands and results to enhance the logic flow.  
+>LLM trained on personal data sets on security methodology documentation containing example commands and results to enhance the LLM knowledge base.  
 
 ----  
 
