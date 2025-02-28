@@ -71,6 +71,10 @@ sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.
 
 >Agentic Model testing: ``  
 
+## Integration Authorization  
+
+>Protect access control what services may interact with Middleware API, to prevent unauthorized access from rogue actors.
+
 ## Middleware API  
 
 >Develop API integration with the input prompt, the LLM must perform the security actitivity by running local bash commands on Ubuntu.  
@@ -109,13 +113,13 @@ curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/js
 
 >Results must be saved and records as evidence that will be put into document, screenshots taken as part of evendice.  
 
-## Take Screenshots as part of Artifacts  
+## Screenshots Evidence   
 
 >Screenshots must include dates for timeline and logging.  
 
 ## Training & Enhance  
 
->LLM trained on security methodology documentation containing example commands and results to enhance the logic flow.  
+>LLM trained on personal data sets on security methodology documentation containing example commands and results to enhance the LLM knowledge base.  
 
 ----  
 
