@@ -1,1 +1,4 @@
-notes
+Work in progress code samples to automate the LLM security assistance interface
+
+Peanuts
+
