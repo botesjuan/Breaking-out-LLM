@@ -54,7 +54,7 @@
 
 >The following image is early basic proof of concept results of automating LLM security assessment assistant code, getting user input and suggesting next commands:  
 
-![Sample Integration Result](/images/basic_integration_result.png)  
+![Sample Integration Result](/images/basic_integrtion_result.png)  
 
 
 ----  
