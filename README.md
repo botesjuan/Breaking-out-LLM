@@ -52,7 +52,8 @@
 
 ### Sample Integration Result  
 
->The following image is early basic proof of concept results of automating LLM security assessment assistant code, getting user input and suggesting next commands:  
+>The following image from `peanut-ai` is early basic proof of concept (POC) results of automating LLM security assessment assistant code.
+>Prompt getting user input and suggesting next command to user for continue of process flows:  
 
 ![Sample Integration Result](/images/basic_integrtion_result.png)  
 
