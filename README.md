@@ -27,11 +27,34 @@
 >This research is constrained by the available resources and funding to test performance.
 >This proof of concept (POC) is to validate the execution functionality, results and not the speed.  
 
+----  
+
 ## Design  
 
->Integration of LLM, Ollama, WebUI, Middleware API, host instructions:  
+>Automated LLM Security Assessment Assistant process of LLM, Ollama Chat API, Middleware API on Ubuntu host:  
+
+### Legend  
+
+1. Scoping user prompt
+2. Convert to LLM Generate Command
+3. Send request to Ollama Chat API
+4. Execute command on Middleware API
+5. Middleware API execute command
+6. Response send to Ollama Chat API
+7. LLM Explanation of response
+8. LLM Suggest next command
+9. user prompt
+
+* Return to step 2 if instructing LLM with suggested next command - Future is to enhance and automate and continue security assessment tasks...  
 
 ![breakout llm design jail](/images/breakout-llm-design.png)  
+
+### Sample Integration Result  
+
+>The following image is early basic proof of concept results of automating LLM security assessment assistant code, getting user input and suggesting next commands:  
+
+![Sample Integration Result](\images\basic_integration_result.png)  
+
 
 ----  
 
@@ -43,10 +66,15 @@
 - Architecture 64-bit
 - CPU AMD Ryzen 5 2600 
 - CPU's 12
-- GPU Nvidia GeForce RTX 4060 Ti with 16 GB onboard memory 
-- Onboard memory 32 GB 
+- GPU Nvidia GeForce RTX 4060 Ti with 16 GB video memory 
+- Motherboard onboard memory 32 GB 
 
->Local Ollama installed `http://0.0.0.0:11434`  
+### Software
+
+* Local Ollama API target installed `http://0.0.0.0:11434/api/chat`  
+* Local WebUI installed `http://0.0.0.0:8080/`  
+* Middleware API Executor `http://0.0.0.0:5001` - Python Flask App
+* Interface Processing Code `cmd_line_llm_prompt_send_cmd_to_middleware.py`  
 
 >Configuration altered to allow Ollama to be reachable from all local interfaces edit:  
 
@@ -54,7 +82,7 @@
 sudo systemctl edit --full ollama
 ```  
 
->Set the docker instance for Ollama-WebUI to auto start the container after Ubuntu boot:  
+>***Not currently relevant*** - Set the docker instance for Ollama-WebUI to auto start the container after Ubuntu boot:  
 
 ```
 sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main
@@ -65,11 +93,11 @@ sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.
 
 ## Large Language Model LLM  
 
->`Deepseek R1` LLM that provide the inital interactive input, is not an `Agentic` Model  
+>`llama3` LLM that provide the inital interactive input, is an `Agentic` Large Language Model.  
 
->Ollama API get Models Downloaded locally: `http://192.168.255.57:11434/api/tags`  
+>Ollama API list of Models Downloaded locally: `http://192.168.255.57:11434/api/tags`  
 
->Agentic Model testing: ``  
+>Agentic Model testing: `llama3`  
 
 ## Integration Authorization  
 
