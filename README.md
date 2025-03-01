@@ -34,7 +34,7 @@
 
 >Automated LLM Security Assessment Assistant process of LLM, Ollama Chat API, Middleware API on Ubuntu host:  
 
-### Legend  
+### Process Flow Legend  
 
 1. Scoping user prompt
 2. Convert to LLM Generate Command
@@ -54,7 +54,7 @@
 
 >The following image is early basic proof of concept results of automating LLM security assessment assistant code, getting user input and suggesting next commands:  
 
-![Sample Integration Result](\images\basic_integration_result.png)  
+![Sample Integration Result](/images/basic_integration_result.png)  
 
 
 ----  
