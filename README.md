@@ -3,11 +3,12 @@
 >My work in progress notes as my knowledge expand while doing research and learning to build my objective.  
 >Breaking out of LLM constrains and build AI Task Assistant to perform interactive security assessment.  
   
-<img src="/images/jail.png" width=250 height=200>
+<img src="/images/jail.png" width=150 height=100>
 
->The research and learnings I am documenting here is to build a local `AI` assistant that performs authorized penetration testing tasks by running commands and tools against a target and reviewing output from said tools to perform additional activities based on results and document artifacts.  
+>The research and learnings I am documenting here is to build a local `AI` assistant that performs authorized penetration testing tasks.
+>Aim is to allow it to be executing commands against a approved target and review output to perform additional activities based on results and document artifacts.  
 
-<img src="/images/break-glass.png" width=250 height=200>
+<img src="/images/break-glass.png" width=150 height=100>
 
 ----  
 
