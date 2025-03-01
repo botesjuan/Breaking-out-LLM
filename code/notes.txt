@@ -1,1 +1,530 @@
-notes
+Work in progress code samples to automate the LLM security assistance interface
+
+Peanuts
+
+curl -fsSL https://ollama.com/install.sh | sh
+
+
+git clone https://github.com/ollama-webui/ollama-webui
+cd ollama-webui
+docker compose up -d
+
+sudo apt install -y ca-certificates curl gnupg lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update -y
+
+
+
+nvidia-smi
+
+
+sudo apt update && sudo apt upgrade;
+
+ubuntu-drivers devices;
+sudo apt-get install linux-headers-$(uname -r) build-essential;
+# reboot
+sudo apt install nvidia-cuda-toolkit;
+lspci | grep -i nvidia;
+sudo apt install nvidia-driver-550;
+sudo apt update && sudo apt upgrade;
+# reboot
+nvidia-smi;
+nvcc --version;
+
+
+sudo apt install nvidia-cuda-toolkit
+
+
+
+sudo systemctl stop docker
+
+sudo systemctl status docker
+
+sudo docker ps -a
+
+sudo systemctl status docker
+
+http://192.168.255.57:11434
+
+curl http://192.168.255.57:11434/api/tags
+
+
+
+158  ifconfig
+  159  sudo apt install ifconfig
+  160  sudo apt install net-tools
+  161  ifconfig
+  162  curl http://127.0.0.1:11434/api/tags
+  163  sudo systemctl status ufw
+  164  ss -tulnp | grep 11434
+  165  curl http://192.168.255.57:11434/api/tags
+  166  sudo systemctl edit --full ollama
+  167  sudo systemctl daemon-reload
+  168  sudo systemctl restart reload
+  169  sudo systemctl restart ollama
+  170  ss -tulnp | grep 11434
+  171  sudo ss -tulnp | grep 11434
+  172  sudo apt install ss
+  173  ss -tulnp | grep 11434
+  174  sudo systemctl status ollama
+  175  sudo systemctl start ollama
+  176  sudo systemctl status ollama
+  177  sudo systemctl edit --full ollama
+  178  sudo systemctl stop ollama
+  179  sudo systemctl daemon-reload
+  180  sudo systemctl start ollama
+  181  sudo systemctl status ollama
+  182  curl http://192.168.255.57:11434/api/tags
+  183  sudo systemctl status ollama
+  184  which ollama
+  185  sudo systemctl edit --full ollama
+  186  sudo systemctl daemon-reload
+  187  sudo systemctl restart ollama
+  188  sudo systemctl status ollama
+
+
+
+pip install flask
+python3 ollama_command_executor.py
+
+
+
+
+sudo docker ps -a
+CONTAINER ID   IMAGE                                COMMAND               CREATED       STATUS                   PORTS                                         NAMES
+d3860504d898   ghcr.io/open-webui/open-webui:main   "bash start.sh"       4 hours ago   Up 4 hours (healthy)     0.0.0.0:3000->8080/tcp, [::]:3000->8080/tcp   open-webui
+1cf46a0bb829   ollama/ollama:latest                 "/bin/ollama serve"   4 hours ago   Exited
+
+sudo docker stop d3860504d898
+sudo docker rm d3860504d898
+sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main
+
+sudo docker ps -a
+
+
+ 187  sudo systemctl restart ollama
+  188  sudo systemctl status ollama
+  189  q
+  190  history | tail -n33
+  191  pip install flask
+  192  sudo pip install flask
+  193  which python
+  194  which python3
+  195  python3 -m ensurepip --default-pip
+  196  sudo apt update
+  197  sudo apt install python3-pip -y
+  198  pip3 --version
+  199  python3 -m pip --version
+  200  pip
+  201  pip install flask
+  202  sudo apt install python3-flask -y
+  203  python3 -m flask --version
+  204  cd ../breakout_api/
+  205  ls -al
+  206  sudo docker ps -a
+  207  sudo docker inspect -f '{{ .HostConfig.RestartPolicy.Name }}' d3860504d898
+  208  sudo docker update --restart unless-stopped d3860504d898
+  209  sudo docker inspect -f '{{ .HostConfig.RestartPolicy.Name }}' d3860504d898
+  210  sudo docker stop d3860504d898
+  211  sudo docker rm d3860504d898
+  212  sudo docker rm 1cf46a0bb829
+  213  sudo docker ps -a
+  214  sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main
+  215  sudo docker ps -a
+
+
+
+http://192.168.255.57:11434/api/tags
+
+http://192.168.255.57:11434
+
+
+You are a system automation assistant. When the user asks to run a command, send a POST request to http://192.168.255.57:5001/execute with {"command": "<bash_command>"}.
+
+Respond with the command output and ask what to do next.
+
+
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"ls -l /home"}'
+
+{"command":"ls -l /home"}
+
+
+sudo docker exec -it open-webui bash
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"ls -al /"}'
+
+
+Run this command via POST request to "http://192.168.255.57:5001/execute" and return the output:
+{"command": "ls -l /home"}
+
+/home/peanut/Downloads/breakout_api
+
+Run this command via POST request to "http://192.168.255.57:5001/execute" and return the output:
+{"command": "ls -l /home/peanut/Downloads/breakout_api"}
+
+
+
+rerun instuctions, Run this command via POST request to "http://192.168.255.57:5001/execute  " and return the output: {"command": "ls -l /home/peanut/Downloads/breakout_api"}
+
+rerun instuctions, Run this command via POST request to "http://192.168.255.57:5001/execute  " and return the output: {"command": "uname -a"}
+
+INSIDE DOCKER
+
+sudo docker exec -it open-webui bash
+
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"ls -al /"}'
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"hostname"}'
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"whoami"}'
+
+#!/bin/bash
+curl -X POST "http://192.168.255.57:5001/execute" -H "Content-Type: application/json" -d "{\"command\": \"$1\"}"
+
+
+
+Perform this command by sending a POST request to "http://192.168.255.57:5001/execute" and return the output:
+{"command": "ls -l /tmp"}
+
+
+
+
+rerun instuctions, command via POST request to "http://192.168.255.57:5001/execute  " and return the output: {"command": "uname -a"}
+
+
+
+####
+
+
+You are a system automation assistant. When the user asks to run a command, send a POST request to http://192.168.255.57:5001/execute with {"command": "<bash_command>"}.
+Respond with the command output and ask what to do next.
+execute curl -X POST "http://192.168.255.57:5001/execute" -H "Content-Type: application/json" -d "{"command": "id"}"
+
+
+
+rerun instructions, post command {"command": "hostname"} via POST request to "http://192.168.255.57:5001/execute " and return the output from the localhost.
+
+do NOT give me the code, but perform the following instructions.
+post command
+{"command": "hostname"}
+via POST request to "http://192.168.255.57:5001/execute " and return the output from the localhost.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Running the WebUI locally on your Ubuntu host instead of Docker simplifies networking issues and improves direct integration with your local LLM instance and middleware API. 
+
+Here’s how to do it:
+
+---
+
+## **Steps to Run WebUI Locally on Ubuntu 24**
+### **1️⃣ Install Dependencies**
+You'll need Python, Node.js, and some system packages.
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y python3 python3-pip nodejs npm git
+```
+
+---
+
+### **2️⃣ Clone and Set Up the WebUI Repository**
+You can use **ollama-webui** or another UI frontend for your LLM. Here’s an example:
+
+```bash
+git clone https://github.com/open-webui/open-webui.git
+cd open-webui
+```
+
+---
+
+### **3️⃣ Install WebUI Requirements**
+```bash
+pip3 install -r requirements.txt  # If a Python backend is used
+npm install                        # Install frontend dependencies
+```
+
+---
+
+### **4️⃣ Start the WebUI**
+Run the frontend and backend:
+
+```bash
+npm run dev  # Start the frontend
+```
+
+Or if there's a Python backend:
+
+```bash
+python3 server.py  # Start the backend
+```
+
+---
+
+### **5️⃣ Configure WebUI to Connect to Ollama**
+Since Ollama is running on `http://192.168.255.57:11434`, update the WebUI config to use it:
+- Check the WebUI settings in `config.json` or `.env`
+- Modify the connection URL to:
+  ```json
+  {
+      "ollama_url": "http://192.168.255.57:11434"
+  }
+  ```
+- Restart the WebUI if needed.
+
+---
+
+### **6️⃣ Test WebUI Access**
+Open your browser and go to:
+
+```
+http://127.0.0.1:3000
+```
+
+If needed, allow external access:
+
+```bash
+npm run dev -- --host 0.0.0.0  # Bind WebUI to all interfaces
+```
+
+Now you’ve eliminated Docker and simplified your setup! 🚀 Would you like to integrate the middleware API next?
+
+
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+Ubuntu 24 enforces **PEP 668**, which prevents direct system-wide installations using `pip3 install -r requirements.txt`. To fix this, you have **three options**:
+
+---
+
+### ✅ **Option 1: Use a Virtual Environment (Recommended)**
+This method keeps your system clean and avoids conflicts.
+
+1️⃣ Create a virtual environment:  
+```bash
+python3 -m venv ~/mywebui-venv
+```
+
+2️⃣ Activate the virtual environment:  
+```bash
+source ~/mywebui-venv/bin/activate
+```
+
+3️⃣ Install dependencies:  
+```bash
+pip install -r requirements.txt
+```
+
+4️⃣ Run your WebUI inside this environment. When done, deactivate it with:  
+```bash
+deactivate
+```
+
+---
+
+### ✅ **Option 2: Use `pipx` for Isolated Package Management**
+If the WebUI is a standalone tool, you can use `pipx`:
+
+1️⃣ Install `pipx` if not already installed:  
+```bash
+sudo apt install pipx
+pipx ensurepath
+```
+
+2️⃣ Install the WebUI tool (if applicable):  
+```bash
+pipx install open-webui
+```
+
+---
+
+### ✅ **Option 3: Override the System Restriction (Not Recommended)**
+You **can** force installation system-wide, but this **may break your Python installation**:  
+```bash
+pip install -r requirements.txt --break-system-packages
+```
+⚠️ **Only use this if you fully understand the risks.** A virtual environment is much safer.
+
+---
+
+### 🔥 **Best Approach?**
+If you're running WebUI locally, **Option 1 (Virtual Environment)** is the best choice.  
+Let me know if you need help setting it up! 🚀
+
+
+cd Downloads/
+python3 -m venv ~/mywebui-venv
+source ~/mywebui-venv/bin/activate
+pip install open-webui
+open-webui serve
+
+
+
+
+curl http://192.168.255.57:11434/api/tags | jq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1369  100  1369    0     0   394k      0 --:--:-- --:--:-- --:--:--  445k
+{
+  "models": [
+    {
+      "name": "deepseek-coder:latest",
+      "model": "deepseek-coder:latest",
+      "modified_at": "2025-02-26T17:11:52.311634449+02:00",
+      "size": 776080839,
+      "digest": "3ddd2d3fc8d2b5fe039d18f859271132fd9c7960ef0be1864984442dc2a915d3",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama"
+        ],
+        "parameter_size": "1B",
+        "quantization_level": "Q4_0"
+      }
+    },
+    {
+      "name": "OpenHermes:latest",
+      "model": "OpenHermes:latest",
+      "modified_at": "2025-02-26T16:56:08.387004811+02:00",
+      "size": 4108928574,
+      "digest": "95477a2659b7539758230498d6ea9f6bfa5aa51ffb3dea9f37c91cacbac459c1",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama"
+        ],
+        "parameter_size": "7B",
+        "quantization_level": "Q4_0"
+      }
+    },
+    {
+      "name": "mistral:latest",
+      "model": "mistral:latest",
+      "modified_at": "2025-02-26T16:38:13.461871488+02:00",
+      "size": 4113301824,
+      "digest": "f974a74358d62a017b37c6f424fcdf2744ca02926c4f952513ddf474b2fa5091",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama"
+        ],
+        "parameter_size": "7.2B",
+        "quantization_level": "Q4_0"
+      }
+    },
+    {
+      "name": "deepseek-r1:latest",
+      "model": "deepseek-r1:latest",
+      "modified_at": "2025-02-26T12:28:31.661417337+02:00",
+      "size": 4683075271,
+      "digest": "0a8c266910232fd3291e71e5ba1e058cc5af9d411192cf88b6d30e92b6e73163",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M"
+      }
+    }
+  ]
+}
+
+
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"ls -al /"}'
+
+
+
+
+
+ollama run OpenHermes:latest "Execute this API call: http://192.168.255.57:5001/execute with payload { 'command': 'ls -al /' }"
+
+ollama run OpenHermes:latest "Execute this API call: http://192.168.255.57:5001/execute with payload { 'command': 'ls -al /' }"
+
+
+
+sudo docker update --restart=no open-webui
+sudo docker inspect -f '{{ .HostConfig.RestartPolicy.Name }}' open-webui
+sudo systemctl list-units --type=service | grep docker
+sudo systemctl disable docker-container@open-webui
+sudo systemctl stop docker-container@open-webui
+
+sudo apt install KolourPaint
+
+
+GIMP
+
+
+
+curl ifconfig.io
+  298  ip a
+  299  cd breakout_api/
+  300  sudo python3 ollama_command_executor.py 
+  301  sudo pip install open-webui
+  302  cd Downloads/
+  303  python3 -m venv ~/mywebui-venv
+  304  source ~/mywebui-venv/bin/activate
+  305  pip install open-webui
+  306  open-webui serve
+  307  DEBUG=1 open-webui serve
+
+  308  sudo docker ps -a
+  309  sudo docker update --restart=no open-webui
+  310  sudo docker ps -a
+  311  sudo docker inspect -f '{{ .HostConfig.RestartPolicy.Name }}' open-webui
+  312  sudo systemctl list-units --type=service | grep docker
+  313  sudo systemctl disable docker-container@open-webui
+  314  sudo systemctl stop docker-container@open-webui
+  315  sudo apt install KolourPaint
+  316  KolourPaint
+  317  kolourpaint
+  318  GIMP
+  319  SUDO APT INSTALL GIMP
+  320  sudo apt install gimp
+  321  sudo apt update && sudo apt upgrade -y
+
+
+
+You are a system automation assistant. When the user asks to run a command, send a POST request to 
+http://192.168.255.57:5001/execute with {"command": "<bash_command>"}.
+
+Respond with the command output and ask what to do next.
+
+
+curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/json" -d '{"command":"ls -al /home"}'
+
+pip install requests
+
+
+
+Define API endpoints
+OLLAMA_API_URL = "http://192.168.255.57:11434/api/generate"
+
+ollama run llama3 "Execute this API call: http://192.168.255.57:5001/execute with payload { 'command': 'ls -al /' }"
+
+http://192.168.255.57:11434/api/generate
+404 page not found
+
+
+curl -X POST http://192.168.255.57:11434/api/chat -d '{
+  "model": "llama3",
+  "messages": [{"role": "user", "content": "Generate a JSON payload for executing the bash command `ls -la` via an API that accepts POST requests at http://192.168.255.57:5001/execute."}]
+}'
+
+
+
+
+
+
+
+sudo python3 middleware_api/middleware_api_executor.py
+sudo python3 llm_cmd_prompt_2_middleware/cmd_line_llm_prompt_send_cmd_to_middleware.py 
+
+
