@@ -44,7 +44,7 @@
 6. Response send to Ollama Chat API
 7. LLM Explanation of response
 8. LLM Suggest next command
-9. user prompt
+9. User prompt
 
 * Return to step 2 if instructing LLM with suggested next command - Future is to enhance and automate and continue security assessment tasks...  
 
@@ -60,7 +60,9 @@
 
 ----  
 
-## Setup  
+## Build  
+
+### Hardware  
 
 >Physical Hardware and OS:  
 
@@ -71,12 +73,14 @@
 - GPU Nvidia GeForce RTX 4060 Ti with 16 GB video memory 
 - Motherboard onboard memory 32 GB 
 
-### Software
+### Components  
 
 * Local Ollama API target installed `http://0.0.0.0:11434/api/chat`  
 * Local WebUI installed `http://0.0.0.0:8080/`  
 * Middleware API Executor `http://0.0.0.0:5001` - Python Flask App
 * Interface Processing Code `cmd_line_llm_prompt_send_cmd_to_middleware.py`  
+
+### Configuration  
 
 >Configuration altered to allow Ollama to be reachable from all local interfaces edit:  
 
@@ -93,13 +97,15 @@ sudo docker run -d --restart unless-stopped -p 3000:8080 --name open-webui ghcr.
 >Docker instance of Open WebUI: `http://127.0.0.1:3000/`  
 >Connected to Ollama local instance: `http://192.168.255.57:11434`  
 
-## Large Language Model LLM  
+### Large Language Model LLM  
 
 >`llama3` LLM that provide the inital interactive input, is an `Agentic` Large Language Model.  
 
 >Ollama API list of Models Downloaded locally: `http://192.168.255.57:11434/api/tags`  
 
 >Agentic Model testing: `llama3`  
+
+----  
 
 ## Integration Authorization  
 
