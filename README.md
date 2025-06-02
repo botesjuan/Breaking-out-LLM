@@ -161,3 +161,8 @@ curl -X POST http://192.168.255.57:5001/execute -H "Content-Type: application/js
 
 >Status: Inprogress research since: January 2025  
   
+----  
+
+# AI Hacker Assistant Resources  
+
+* Notion.so - 
